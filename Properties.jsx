@@ -120,14 +120,31 @@ const Properties = ({ listingType }) => {
           {properties.map((property) => (
             <Grid item xs={12} sm={6} md={4} key={property.id}>
               <Card sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                position: 'relative'
-              }}>
-                <CardMedia
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  position: 'relative',
+                  bgcolor: 'background.default', // White background
+                  boxShadow: 1, // Subtle box shadow
+                  transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                  '&:hover': {
+                      transform: 'translateY(-4px)', // Lift on hover
+                      boxShadow: 5, // Stronger shadow on hover
+                  }
+              }}
+
+              >
+                <Chip
+                  label={property.status}
+                  size="small"
+                  sx={{ position: 'absolute', top: 10, left: 10, zIndex: 1,
+                    bgcolor: property.status === 'available' ? 'available.main' : 'underContract.main',
+                    color: 'white',
+                 }}
+                />
+                <CardMedia sx={{ position: 'relative' }}
                   component="img"
-                  height="240"
+                  height="200"
                   image={property.image}
                   alt={property.title}
                 />
