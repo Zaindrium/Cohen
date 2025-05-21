@@ -16,12 +16,12 @@ import {
   Apartment,
   Description,
   TrendingUp,
-  Add
+  Add,
 } from '@mui/icons-material';
 
 const Dashboard = ({ listingType, setListingType }) => {
   const navigate = useNavigate();
-  
+
   const handleListingTypeChange = (event, newType) => {
     if (newType !== null) {
       setListingType(newType);
@@ -32,12 +32,19 @@ const Dashboard = ({ listingType, setListingType }) => {
     totalProperties: listingType === 'rentals' ? 24 : 18,
     activeListings: listingType === 'rentals' ? 15 : 12,
     pendingApplications: 8,
-    monthlyViews: 1250
+    monthlyViews: 1250,
   };
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box
+        sx={{
+          mb: 4,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
         <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }}>
           Dashboard
         </Typography>

@@ -16,7 +16,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Paper
+  Paper,
 } from '@mui/material';
 import { Line, Bar } from 'react-chartjs-2';
 import {
@@ -28,7 +28,7 @@ import {
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 } from 'chart.js';
 
 ChartJS.register(
@@ -39,7 +39,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const Analytics = () => {
@@ -53,7 +53,7 @@ const Analytics = () => {
       viewings: 8,
       applications: 3,
       leaseAgreements: 1,
-      conversionRate: 37.5
+      conversionRate: 37.5,
     },
     {
       id: 2,
@@ -63,58 +63,69 @@ const Analytics = () => {
       viewings: 12,
       applications: 5,
       leaseAgreements: 2,
-      conversionRate: 41.7
-    }
+      conversionRate: 41.7,
+    },
   ]);
 
   // Property Performance Chart Data
   const propertyPerformance = {
-    labels: propertyMetrics.map(p => p.address.split(',')[0]),
+    labels: propertyMetrics.map((p) => p.address.split(',')[0]),
     datasets: [
       {
         label: 'Interest Metrics',
-        data: propertyMetrics.map(p => p.inquiries),
+        data: propertyMetrics.map((p) => p.inquiries),
         borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1
-      }
-    ]
+        tension: 0.1,
+      },
+    ],
   };
 
   // Property Interest Distribution
   const propertyInterest = {
     labels: ['Inquiries', 'Viewings', 'Applications', 'Lease Agreements'],
-    datasets: [{
-      data: propertyMetrics.reduce(
-        (acc, p) => [
-          acc[0] + p.inquiries,
-          acc[1] + p.viewings,
-          acc[2] + p.applications,
-          acc[3] + p.leaseAgreements
+    datasets: [
+      {
+        data: propertyMetrics.reduce(
+          (acc, p) => [
+            acc[0] + p.inquiries,
+            acc[1] + p.viewings,
+            acc[2] + p.applications,
+            acc[3] + p.leaseAgreements,
+          ],
+          [0, 0, 0, 0],
+        ),
+        backgroundColor: [
+          'rgb(75, 192, 192)',
+          'rgb(255, 205, 86)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 99, 132)',
         ],
-        [0, 0, 0, 0]
-      ),
-      backgroundColor: [
-        'rgb(75, 192, 192)',
-        'rgb(255, 205, 86)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 99, 132)'
-      ]
-    }]
+      },
+    ],
   };
 
   // Conversion Funnel
   const conversionTrends = {
-    labels: propertyMetrics.map(p => p.address.split(',')[0]),
-    datasets: [{
-      label: 'Conversion Rate (%)',
-      data: propertyMetrics.map(p => p.conversionRate),
-      backgroundColor: 'rgb(54, 162, 235)'
-    }]
+    labels: propertyMetrics.map((p) => p.address.split(',')[0]),
+    datasets: [
+      {
+        label: 'Conversion Rate (%)',
+        data: propertyMetrics.map((p) => p.conversionRate),
+        backgroundColor: 'rgb(54, 162, 235)',
+      },
+    ],
   };
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box
+        sx={{
+          mb: 4,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
         <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }}>
           Property Analytics
         </Typography>
@@ -146,8 +157,8 @@ const Analytics = () => {
                   responsive: true,
                   plugins: {
                     legend: { position: 'top' },
-                    title: { display: false }
-                  }
+                    title: { display: false },
+                  },
                 }}
               />
             </CardContent>
@@ -166,8 +177,8 @@ const Analytics = () => {
                   responsive: true,
                   plugins: {
                     legend: { display: false },
-                    title: { display: false }
-                  }
+                    title: { display: false },
+                  },
                 }}
               />
             </CardContent>
@@ -186,8 +197,8 @@ const Analytics = () => {
                   responsive: true,
                   plugins: {
                     legend: { position: 'top' },
-                    title: { display: false }
-                  }
+                    title: { display: false },
+                  },
                 }}
               />
             </CardContent>
@@ -216,8 +227,12 @@ const Analytics = () => {
                     <TableCell align="right">{property.inquiries}</TableCell>
                     <TableCell align="right">{property.viewings}</TableCell>
                     <TableCell align="right">{property.applications}</TableCell>
-                    <TableCell align="right">{property.leaseAgreements}</TableCell>
-                    <TableCell align="right">{property.conversionRate}%</TableCell>
+                    <TableCell align="right">
+                      {property.leaseAgreements}
+                    </TableCell>
+                    <TableCell align="right">
+                      {property.conversionRate}%
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

@@ -28,8 +28,7 @@ const theme = createTheme({
       fontWeight: 'bold',
       color: '#003B4D',
     },
-        h2: {
-
+    h2: {
       fontFamily: 'Poppins',
       fontWeight: 'bold',
       color: '#003B4D',

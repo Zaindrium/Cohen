@@ -10,7 +10,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Divider
+  Divider,
 } from '@mui/material';
 
 const SalesForm = () => {
@@ -22,52 +22,52 @@ const SalesForm = () => {
       bathrooms: '',
       parkingSpaces: '',
       totalArea: '',
-      yearBuilt: ''
+      yearBuilt: '',
     },
     pricing: {
       listingPrice: '',
       offerPrice: '',
-      depositAmount: ''
+      depositAmount: '',
     },
     buyer: {
       name: '',
       email: '',
       phone: '',
-      currentAddress: ''
+      currentAddress: '',
     },
     financials: {
       preApproved: false,
       lenderName: '',
       loanAmount: '',
-      downPayment: ''
+      downPayment: '',
     },
     employment: {
       employer: '',
       position: '',
       annualIncome: '',
-      yearsEmployed: ''
+      yearsEmployed: '',
     },
     applicationStatus: 'pending',
     viewingAgent: '',
     offerDate: '',
-    closingDate: ''
+    closingDate: '',
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name.includes('.')) {
       const [parent, child] = name.split('.');
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         [parent]: {
           ...prev[parent],
-          [child]: value
-        }
+          [child]: value,
+        },
       }));
     } else {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        [name]: value
+        [name]: value,
       }));
     }
   };

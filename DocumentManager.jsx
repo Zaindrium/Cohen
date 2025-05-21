@@ -17,7 +17,7 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
-  ListItemSecondaryAction
+  ListItemSecondaryAction,
 } from '@mui/material';
 import {
   Description,
@@ -25,7 +25,7 @@ import {
   Upload,
   Delete,
   Download,
-  Add
+  Add,
 } from '@mui/icons-material';
 
 const DocumentManager = () => {
@@ -35,15 +35,15 @@ const DocumentManager = () => {
       name: 'Lease Agreement - 123 Main St',
       type: 'lease',
       uploadDate: '2024-01-15',
-      size: '2.5 MB'
+      size: '2.5 MB',
     },
     {
       id: 2,
       name: 'Sales Contract - 456 Oak Ave',
       type: 'contract',
       uploadDate: '2024-01-14',
-      size: '1.8 MB'
-    }
+      size: '1.8 MB',
+    },
   ]);
 
   const [openUpload, setOpenUpload] = useState(false);
@@ -54,7 +54,7 @@ const DocumentManager = () => {
     { id: 'all', name: 'All Documents', icon: <Description /> },
     { id: 'lease', name: 'Lease Agreements', icon: <Description /> },
     { id: 'contract', name: 'Sales Contracts', icon: <Description /> },
-    { id: 'property', name: 'Property Documents', icon: <Folder /> }
+    { id: 'property', name: 'Property Documents', icon: <Folder /> },
   ];
 
   const handleUpload = () => {
@@ -63,18 +63,23 @@ const DocumentManager = () => {
   };
 
   const handleDelete = (documentId) => {
-    setDocuments(documents.filter(doc => doc.id !== documentId));
+    setDocuments(documents.filter((doc) => doc.id !== documentId));
   };
 
-  const filteredDocuments = documents.filter(doc =>
-    (selectedFolder === 'all' || doc.type === selectedFolder) &&
-    doc.name.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredDocuments = documents.filter(
+    (doc) =>
+      (selectedFolder === 'all' || doc.type === selectedFolder) &&
+      doc.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" component="h1" sx={{ mb: 3, fontWeight: 'bold' }}>
+        <Typography
+          variant="h4"
+          component="h1"
+          sx={{ mb: 3, fontWeight: 'bold' }}
+        >
           Document Manager
         </Typography>
 
@@ -129,7 +134,11 @@ const DocumentManager = () => {
                       secondary={`Uploaded: ${doc.uploadDate} | Size: ${doc.size}`}
                     />
                     <ListItemSecondaryAction>
-                      <IconButton onClick={() => {/* Implement download */}}>
+                      <IconButton
+                        onClick={() => {
+                          /* Implement download */
+                        }}
+                      >
                         <Download />
                       </IconButton>
                       <IconButton onClick={() => handleDelete(doc.id)}>

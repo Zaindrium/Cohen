@@ -19,7 +19,7 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Chip
+  Chip,
 } from '@mui/material';
 import {
   Person,
@@ -28,7 +28,7 @@ import {
   Delete,
   Phone,
   Email,
-  Home
+  Home,
 } from '@mui/icons-material';
 
 const ClientCRM = () => {
@@ -45,9 +45,9 @@ const ClientCRM = () => {
         {
           property: '123 Main St, Apt 4B',
           date: '2024-01-15',
-          notes: 'Liked the layout, concerned about price'
-        }
-      ]
+          notes: 'Liked the layout, concerned about price',
+        },
+      ],
     },
     {
       id: 2,
@@ -60,10 +60,10 @@ const ClientCRM = () => {
         {
           property: '456 Oak Ave',
           date: '2024-01-14',
-          notes: 'Very interested, discussing offer'
-        }
-      ]
-    }
+          notes: 'Very interested, discussing offer',
+        },
+      ],
+    },
   ]);
 
   const [openNewClient, setOpenNewClient] = useState(false);
@@ -85,17 +85,25 @@ const ClientCRM = () => {
   };
 
   const handleDeleteClient = (clientId) => {
-    setClients(clients.filter(client => client.id !== clientId));
+    setClients(clients.filter((client) => client.id !== clientId));
   };
 
-  const filteredClients = clients.filter(client =>
-    client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    client.email.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredClients = clients.filter(
+    (client) =>
+      client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      client.email.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box
+        sx={{
+          mb: 4,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
         <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }}>
           Client Management
         </Typography>
@@ -132,25 +140,55 @@ const ClientCRM = () => {
 
               <List>
                 {filteredClients.map((client) => (
-                  <ListItem key={client.id} sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                  <ListItem
+                    key={client.id}
+                    sx={{ borderBottom: 1, borderColor: 'divider' }}
+                  >
                     <ListItemText
                       primary={
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <Typography variant="subtitle1">{client.name}</Typography>
-                          <Chip size="small" label={client.status} color="primary" />
+                        <Box
+                          sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+                        >
+                          <Typography variant="subtitle1">
+                            {client.name}
+                          </Typography>
+                          <Chip
+                            size="small"
+                            label={client.status}
+                            color="primary"
+                          />
                         </Box>
                       }
                       secondary={
                         <Box sx={{ mt: 1 }}>
-                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 1,
+                            }}
+                          >
                             <Email fontSize="small" />
                             {client.email}
                           </Box>
-                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 1,
+                            }}
+                          >
                             <Phone fontSize="small" />
                             {client.phone}
                           </Box>
-                          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1 }}>
+                          <Box
+                            sx={{
+                              display: 'flex',
+                              alignItems: 'center',
+                              gap: 1,
+                              mt: 1,
+                            }}
+                          >
                             <Home fontSize="small" />
                             Last Viewing: {client.viewingHistory[0]?.property}
                           </Box>

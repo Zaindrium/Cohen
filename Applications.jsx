@@ -19,7 +19,7 @@ const Applications = () => {
             <Tab label="Sales Application" />
           </Tabs>
         </Box>
-        
+
         {activeTab === 0 ? <RentalForm /> : <SalesForm />}
       </Box>
     </Container>

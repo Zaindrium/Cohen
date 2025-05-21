@@ -16,7 +16,7 @@ import {
   Select,
   MenuItem,
   FormControl,
-  InputLabel
+  InputLabel,
 } from '@mui/material';
 
 const Marketing = () => {
@@ -31,13 +31,13 @@ const Marketing = () => {
       { location: 'Downtown', count: 15 },
       { location: 'Suburbs North', count: 12 },
       { location: 'Waterfront', count: 10 },
-      { location: 'West End', count: 8 }
+      { location: 'West End', count: 8 },
     ],
     propertyTypePreferences: [
       { type: 'Apartment', percentage: '45%' },
       { type: 'House', percentage: '30%' },
       { type: 'Condo', percentage: '15%' },
-      { type: 'Townhouse', percentage: '10%' }
+      { type: 'Townhouse', percentage: '10%' },
     ],
     recentApplications: [
       {
@@ -46,7 +46,7 @@ const Marketing = () => {
         name: 'John Doe',
         propertyType: 'Apartment',
         location: 'Downtown',
-        budget: '$2,500'
+        budget: '$2,500',
       },
       {
         id: 2,
@@ -54,7 +54,7 @@ const Marketing = () => {
         name: 'Jane Smith',
         propertyType: 'House',
         location: 'Suburbs North',
-        budget: '$450,000'
+        budget: '$450,000',
       },
       {
         id: 3,
@@ -62,14 +62,21 @@ const Marketing = () => {
         name: 'Mike Johnson',
         propertyType: 'Condo',
         location: 'Waterfront',
-        budget: '$350,000'
-      }
-    ]
+        budget: '$350,000',
+      },
+    ],
   };
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box
+        sx={{
+          mb: 4,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
         <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }}>
           Marketing Analytics
         </Typography>
@@ -93,24 +100,36 @@ const Marketing = () => {
         <Grid item xs={12} md={4}>
           <Card>
             <CardContent>
-              <Typography variant="h6" sx={{ mb: 2 }}>Total Applications</Typography>
-              <Typography variant="h3">{marketingStats.totalApplications}</Typography>
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                Total Applications
+              </Typography>
+              <Typography variant="h3">
+                {marketingStats.totalApplications}
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} md={4}>
           <Card>
             <CardContent>
-              <Typography variant="h6" sx={{ mb: 2 }}>Conversion Rate</Typography>
-              <Typography variant="h3">{marketingStats.conversionRate}</Typography>
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                Conversion Rate
+              </Typography>
+              <Typography variant="h3">
+                {marketingStats.conversionRate}
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
         <Grid item xs={12} md={4}>
           <Card>
             <CardContent>
-              <Typography variant="h6" sx={{ mb: 2 }}>Average Income</Typography>
-              <Typography variant="h3">{marketingStats.averageIncome}</Typography>
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                Average Income
+              </Typography>
+              <Typography variant="h3">
+                {marketingStats.averageIncome}
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
@@ -119,7 +138,9 @@ const Marketing = () => {
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
-              <Typography variant="h6" sx={{ mb: 2 }}>Top Requested Locations</Typography>
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                Top Requested Locations
+              </Typography>
               <TableContainer>
                 <Table>
                   <TableHead>
@@ -146,7 +167,9 @@ const Marketing = () => {
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
-              <Typography variant="h6" sx={{ mb: 2 }}>Property Type Preferences</Typography>
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                Property Type Preferences
+              </Typography>
               <TableContainer>
                 <Table>
                   <TableHead>
@@ -156,12 +179,16 @@ const Marketing = () => {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {marketingStats.propertyTypePreferences.map((preference) => (
-                      <TableRow key={preference.type}>
-                        <TableCell>{preference.type}</TableCell>
-                        <TableCell align="right">{preference.percentage}</TableCell>
-                      </TableRow>
-                    ))}
+                    {marketingStats.propertyTypePreferences.map(
+                      (preference) => (
+                        <TableRow key={preference.type}>
+                          <TableCell>{preference.type}</TableCell>
+                          <TableCell align="right">
+                            {preference.percentage}
+                          </TableCell>
+                        </TableRow>
+                      ),
+                    )}
                   </TableBody>
                 </Table>
               </TableContainer>
@@ -173,7 +200,9 @@ const Marketing = () => {
         <Grid item xs={12}>
           <Card>
             <CardContent>
-              <Typography variant="h6" sx={{ mb: 2 }}>Recent Applications</Typography>
+              <Typography variant="h6" sx={{ mb: 2 }}>
+                Recent Applications
+              </Typography>
               <TableContainer component={Paper}>
                 <Table>
                   <TableHead>
@@ -192,7 +221,9 @@ const Marketing = () => {
                         <TableCell>{application.name}</TableCell>
                         <TableCell>{application.propertyType}</TableCell>
                         <TableCell>{application.location}</TableCell>
-                        <TableCell align="right">{application.budget}</TableCell>
+                        <TableCell align="right">
+                          {application.budget}
+                        </TableCell>
                       </TableRow>
                     ))}
                   </TableBody>

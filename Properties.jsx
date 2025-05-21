@@ -14,7 +14,7 @@ import {
   MenuItem,
   Select,
   FormControl,
-  InputLabel
+  InputLabel,
 } from '@mui/material';
 import {
   Search,
@@ -23,7 +23,7 @@ import {
   Bathtub,
   DirectionsCar,
   Favorite,
-  FavoriteBorder
+  FavoriteBorder,
 } from '@mui/icons-material';
 
 const Properties = ({ listingType }) => {
@@ -43,7 +43,7 @@ const Properties = ({ listingType }) => {
       bathrooms: 2,
       parking: 1,
       image: 'https://placehold.co/600x400',
-      status: 'available'
+      status: 'available',
     },
     {
       id: 2,
@@ -55,15 +55,15 @@ const Properties = ({ listingType }) => {
       bathrooms: 3,
       parking: 2,
       image: 'https://placehold.co/600x400',
-      status: 'available'
-    }
+      status: 'available',
+    },
   ];
 
   const toggleFavorite = (propertyId) => {
-    setFavorites(prev =>
+    setFavorites((prev) =>
       prev.includes(propertyId)
-        ? prev.filter(id => id !== propertyId)
-        : [...prev, propertyId]
+        ? prev.filter((id) => id !== propertyId)
+        : [...prev, propertyId],
     );
   };
 
@@ -71,15 +71,21 @@ const Properties = ({ listingType }) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
-      maximumFractionDigits: 0
+      maximumFractionDigits: 0,
     }).format(price);
   };
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" component="h1" sx={{ mb: 3, fontWeight: 'bold' }}>
-          {listingType === 'rentals' ? 'Rental Properties' : 'Properties for Sale'}
+        <Typography
+          variant="h4"
+          component="h1"
+          sx={{ mb: 3, fontWeight: 'bold' }}
+        >
+          {listingType === 'rentals'
+            ? 'Rental Properties'
+            : 'Properties for Sale'}
         </Typography>
 
         <Grid container spacing={2} sx={{ mb: 4 }}>
@@ -95,7 +101,7 @@ const Properties = ({ listingType }) => {
                   <InputAdornment position="start">
                     <Search />
                   </InputAdornment>
-                )
+                ),
               }}
             />
           </Grid>
@@ -119,30 +125,39 @@ const Properties = ({ listingType }) => {
         <Grid container spacing={3}>
           {properties.map((property) => (
             <Grid item xs={12} sm={6} md={4} key={property.id}>
-              <Card sx={{
+              <Card
+                sx={{
                   height: '100%',
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',
                   bgcolor: 'background.default', // White background
                   boxShadow: 1, // Subtle box shadow
-                  transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                  transition:
+                    'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
                   '&:hover': {
-                      transform: 'translateY(-4px)', // Lift on hover
-                      boxShadow: 5, // Stronger shadow on hover
-                  }
-              }}
-
+                    transform: 'translateY(-4px)', // Lift on hover
+                    boxShadow: 5, // Stronger shadow on hover
+                  },
+                }}
               >
                 <Chip
                   label={property.status}
                   size="small"
-                  sx={{ position: 'absolute', top: 10, left: 10, zIndex: 1,
-                    bgcolor: property.status === 'available' ? 'available.main' : 'underContract.main',
+                  sx={{
+                    position: 'absolute',
+                    top: 10,
+                    left: 10,
+                    zIndex: 1,
+                    bgcolor:
+                      property.status === 'available'
+                        ? 'available.main'
+                        : 'underContract.main',
                     color: 'white',
-                 }}
+                  }}
                 />
-                <CardMedia sx={{ position: 'relative' }}
+                <CardMedia
+                  sx={{ position: 'relative' }}
                   component="img"
                   height="200"
                   image={property.image}
@@ -154,11 +169,15 @@ const Properties = ({ listingType }) => {
                     top: 8,
                     right: 8,
                     bgcolor: 'background.paper',
-                    '&:hover': { bgcolor: 'background.paper' }
+                    '&:hover': { bgcolor: 'background.paper' },
                   }}
                   onClick={() => toggleFavorite(property.id)}
                 >
-                  {favorites.includes(property.id) ? <Favorite color="error" /> : <FavoriteBorder />}
+                  {favorites.includes(property.id) ? (
+                    <Favorite color="error" />
+                  ) : (
+                    <FavoriteBorder />
+                  )}
                 </IconButton>
                 <CardContent sx={{ flexGrow: 1 }}>
                   <Typography variant="h6" component="h2" sx={{ mb: 1 }}>

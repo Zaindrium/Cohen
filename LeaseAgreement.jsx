@@ -12,13 +12,17 @@ import {
   MenuItem,
   Divider,
   Alert,
-  Snackbar
+  Snackbar,
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const LeaseAgreement = () => {
   const navigate = useNavigate();
-  const [notification, setNotification] = useState({ open: false, message: '', severity: 'success' });
+  const [notification, setNotification] = useState({
+    open: false,
+    message: '',
+    severity: 'success',
+  });
   const [formData, setFormData] = useState({
     // Property Details
     property: '',
@@ -27,7 +31,7 @@ const LeaseAgreement = () => {
     leaseStartDate: '',
     leaseDuration: '',
     depositAmount: '',
-    
+
     // Tenant Information
     tenantName: '',
     email: '',
@@ -35,47 +39,47 @@ const LeaseAgreement = () => {
     currentAddress: '',
     employmentStatus: '',
     monthlyIncome: '',
-    
+
     // Employment Details
     employer: '',
     employerContact: '',
     position: '',
     employmentLength: '',
-    
+
     // References
     previousLandlord: {
       name: '',
       phone: '',
-      email: ''
+      email: '',
     },
     emergencyContact: {
       name: '',
       relationship: '',
-      phone: ''
+      phone: '',
     },
-    
+
     // Additional Terms
     utilities: [],
     petPolicy: '',
     parkingSpaces: '',
-    specialConditions: ''
+    specialConditions: '',
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name.includes('.')) {
       const [parent, child] = name.split('.');
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         [parent]: {
           ...prev[parent],
-          [child]: value
-        }
+          [child]: value,
+        },
       }));
     } else {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        [name]: value
+        [name]: value,
       }));
     }
   };
@@ -90,33 +94,34 @@ const LeaseAgreement = () => {
         phone: formData.phone,
         status: 'active',
         interests: [formData.propertyType],
-        viewingHistory: [{
-          property: formData.property,
-          date: new Date().toISOString().split('T')[0],
-          notes: 'Lease agreement submitted'
-        }]
+        viewingHistory: [
+          {
+            property: formData.property,
+            date: new Date().toISOString().split('T')[0],
+            notes: 'Lease agreement submitted',
+          },
+        ],
       };
-      
+
       // 2. Create Google Sheets copy
       // This would be handled by your backend service
-      
+
       // 3. Update property analytics
       // This would be handled by your backend service
-      
+
       setNotification({
         open: true,
         message: 'Lease agreement submitted successfully!',
-        severity: 'success'
+        severity: 'success',
       });
-      
+
       // Navigate to CRM after successful submission
       setTimeout(() => navigate('/crm'), 2000);
-      
     } catch (error) {
       setNotification({
         open: true,
         message: 'Error submitting lease agreement',
-        severity: 'error'
+        severity: 'error',
       });
     }
   };

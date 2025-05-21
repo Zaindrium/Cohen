@@ -10,7 +10,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Divider
+  Divider,
 } from '@mui/material';
 
 const RentalForm = () => {
@@ -28,34 +28,34 @@ const RentalForm = () => {
       employer: '',
       position: '',
       salary: '',
-      startDate: ''
+      startDate: '',
     },
     previousLandlord: {
       name: '',
-      reference: ''
+      reference: '',
     },
     employmentConfirmed: false,
     applicationStatus: 'pending',
     depositRef: '',
     rentalRef: '',
-    viewingAgent: ''
+    viewingAgent: '',
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name.includes('.')) {
       const [parent, child] = name.split('.');
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
         [parent]: {
           ...prev[parent],
-          [child]: value
-        }
+          [child]: value,
+        },
       }));
     } else {
-      setFormData(prev => ({
+      setFormData((prev) => ({
         ...prev,
-        [name]: value
+        [name]: value,
       }));
     }
   };

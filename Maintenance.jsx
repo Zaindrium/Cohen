@@ -20,7 +20,7 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
 } from '@mui/material';
 import {
   Build,
@@ -28,7 +28,7 @@ import {
   PriorityHigh,
   CheckCircle,
   Schedule,
-  Add
+  Add,
 } from '@mui/icons-material';
 
 const Maintenance = () => {
@@ -40,7 +40,7 @@ const Maintenance = () => {
       priority: 'medium',
       status: 'pending',
       dateSubmitted: '2024-01-15',
-      assignedTo: 'John Smith'
+      assignedTo: 'John Smith',
     },
     {
       id: 2,
@@ -49,8 +49,8 @@ const Maintenance = () => {
       priority: 'high',
       status: 'in-progress',
       dateSubmitted: '2024-01-14',
-      assignedTo: 'Mike Johnson'
-    }
+      assignedTo: 'Mike Johnson',
+    },
   ]);
 
   const [openNewRequest, setOpenNewRequest] = useState(false);
@@ -58,19 +58,19 @@ const Maintenance = () => {
     property: '',
     issue: '',
     priority: 'medium',
-    assignedTo: ''
+    assignedTo: '',
   });
 
   const priorityColors = {
     low: 'success',
     medium: 'warning',
-    high: 'error'
+    high: 'error',
   };
 
   const statusIcons = {
     pending: <Schedule color="warning" />,
     'in-progress': <Build color="info" />,
-    completed: <CheckCircle color="success" />
+    completed: <CheckCircle color="success" />,
   };
 
   const handleSubmitRequest = () => {
@@ -78,7 +78,7 @@ const Maintenance = () => {
       ...newRequest,
       id: requests.length + 1,
       status: 'pending',
-      dateSubmitted: new Date().toISOString().split('T')[0]
+      dateSubmitted: new Date().toISOString().split('T')[0],
     };
 
     setRequests([...requests, request]);
@@ -87,21 +87,28 @@ const Maintenance = () => {
       property: '',
       issue: '',
       priority: 'medium',
-      assignedTo: ''
+      assignedTo: '',
     });
   };
 
   const handleRequestChange = (event) => {
     const { name, value } = event.target;
-    setNewRequest(prev => ({
+    setNewRequest((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   return (
     <Container maxWidth="lg" sx={{ py: 4 }}>
-      <Box sx={{ mb: 4, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <Box
+        sx={{
+          mb: 4,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
         <Typography variant="h4" component="h1" sx={{ fontWeight: 'bold' }}>
           Maintenance Requests
         </Typography>
@@ -120,14 +127,19 @@ const Maintenance = () => {
             <CardContent>
               <List>
                 {requests.map((request) => (
-                  <ListItem key={request.id} sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <ListItemIcon>
-                      {statusIcons[request.status]}
-                    </ListItemIcon>
+                  <ListItem
+                    key={request.id}
+                    sx={{ borderBottom: 1, borderColor: 'divider' }}
+                  >
+                    <ListItemIcon>{statusIcons[request.status]}</ListItemIcon>
                     <ListItemText
                       primary={
-                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <Typography variant="subtitle1">{request.property}</Typography>
+                        <Box
+                          sx={{ display: 'flex', alignItems: 'center', gap: 1 }}
+                        >
+                          <Typography variant="subtitle1">
+                            {request.property}
+                          </Typography>
                           <Chip
                             size="small"
                             label={request.priority}
@@ -141,7 +153,8 @@ const Maintenance = () => {
                             {request.issue}
                           </Typography>
                           <Typography variant="body2">
-                            Submitted: {request.dateSubmitted} | Assigned to: {request.assignedTo}
+                            Submitted: {request.dateSubmitted} | Assigned to:{' '}
+                            {request.assignedTo}
                           </Typography>
                         </>
                       }
